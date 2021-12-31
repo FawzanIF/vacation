@@ -61,11 +61,20 @@ class GoToAccountConfirmationPage extends PageEvent {
   List<Object> get props => [];
 }
 
-class GoToSaintekPage extends PageEvent {
+class GoToMenuPage extends PageEvent {
   @override
   List<Object> get props => [];
 }
 
+class GoToDetailPage extends PageEvent {
+  @override
+  List<Object> get props => [];
+}
+
+class GoToSearchPage extends PageEvent {
+  @override
+  List<Object> get props => [];
+}
 
 class GoToEditProfilePage extends PageEvent {
   final User user;

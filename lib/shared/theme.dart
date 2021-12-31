@@ -15,6 +15,7 @@ Color kBlueColor = Color(0xff308CF8);
 Color kYellowColor = Color(0xffF1F51C);
 Color kGreyColor = Color(0xff9698A9);
 Color kGrey2Color = Color(0xffF4F4F4);
+Color kGreenColor = Color(0xff27E07C);
 
 Color kOrangeColor = Color(0xffFFA235);
 

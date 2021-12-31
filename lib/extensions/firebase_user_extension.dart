@@ -4,7 +4,7 @@ extension FirebaseUserExtension on auth.User {
   User convertToUser({
     String name = "No Name",
 
-    int balance = 20,
+    int balance = 30,
   }) =>
       User(
         this.uid,

@@ -1,11 +1,11 @@
 part of 'pages.dart';
 
-class SaintekPage extends StatefulWidget {
+class MenuPage extends StatefulWidget {
   @override
-  _SaintekPageState createState() => _SaintekPageState();
+  _MenuPageState createState() => _MenuPageState();
 }
 
-class _SaintekPageState extends State<SaintekPage> {
+class _MenuPageState extends State<MenuPage> {
   @override
   Widget build(BuildContext context) {
     context
@@ -23,7 +23,7 @@ class _SaintekPageState extends State<SaintekPage> {
         child: BlocBuilder<UserBloc, UserState>(builder: (_, userState) {
           if (userState is UserLoaded) {
             if (imageFileToUpload != null) {
-              uploadImage(imageFileToUpload).then((downloadURL) {
+              uploadImage(imageFileToUpload).then((downloadURL) { 
                 imageFileToUpload = null;
                 context
                     .bloc<UserBloc>()
@@ -172,24 +172,28 @@ class _SaintekPageState extends State<SaintekPage> {
                 imageUrl: 'assets/image_product1.png',
                 rating: 4.9,
                 price: 27,
+                gmaps: 'https://goo.gl/maps/f39DqS5sBuGmkfUq6',
               ),
               RecommemdedTile(
                 name: 'Panglipuran',
                 imageUrl: 'assets/image_product4.jpg',
                 rating: 4.9,
                 price: 12,
+                gmaps: 'https://goo.gl/maps/tQNCxVocQA6T1kX26'
               ),
               RecommemdedTile(
                 name: 'Garuda Wisnu Kencana',
                 imageUrl: 'assets/image_product2.jpg',
                 rating: 4.8,
                 price: 17,
+                gmaps: 'https://g.page/gwkbali?share',
               ),
               RecommemdedTile(
                 name: 'Pura Besakih',
                 imageUrl: 'assets/image_product3.jpg',
                 rating: 4.8,
                 price: 9,
+                gmaps: 'https://goo.gl/maps/hxNE2EkgBz65oboK6',
               ),
             ],
           ),
@@ -237,24 +241,28 @@ class _SaintekPageState extends State<SaintekPage> {
                 imageUrl: 'assets/image_des_gangga.jfif',
                 rating: 4.5,
                 price: 8,
+                gmaps: 'https://g.page/Taman-Tirtagangga?share',
               ),
               DestinationTile(
                 name: 'Tanah Lot',
                 imageUrl: 'assets/image_des_lot.jfif',
                 rating: 4.3,
                 price: 21,
+                gmaps: 'https://goo.gl/maps/1vfkg2aVRRnWDqb99'
               ),
               DestinationTile(
                 name: 'Canggu',
                 imageUrl: 'assets/image_des_canggu.jfif',
                 rating: 4.5,
                 price: 18,
+                gmaps: 'https://goo.gl/maps/xzVR3cduKLg76U5T9'
               ),
               DestinationTile(
-                name: 'Bedegul',
+                name: 'Bedugul',
                 imageUrl: 'assets/image_des_bedegul.jfif',
                 rating: 4.7,
                 price: 7,
+                gmaps: 'https://goo.gl/maps/HJf6cFkZjZ9QfNiE9'
               ),
             ],
           ));

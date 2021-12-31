@@ -12,7 +12,7 @@ class _SignInPageState extends State<SignInPage> {
   bool isEmailValid = false;
   bool isPasswordValid = false;
   bool isSigningIn = false;
-
+  bool _isObscure = true;
   @override
   Widget build(BuildContext context) {
     Widget title() {
@@ -21,7 +21,7 @@ class _SignInPageState extends State<SignInPage> {
           top: defaultMargin,
         ),
         child: Text(
-          'Join us and get\nyour next journey',
+          'Get Ready for\nVacation with Us',
           style: blackTextStyle.copyWith(
             fontSize: 24,
             fontWeight: semiBold,
@@ -99,27 +99,35 @@ class _SignInPageState extends State<SignInPage> {
                 },
                 controller: passwordController,
                 cursorColor: kBlackColor,
-                obscureText: true,
+                obscureText: _isObscure,
                 decoration: InputDecoration(
-                  hintText: 'Email Address',
-                  hintStyle: blackTextStyle.copyWith(
-                    fontSize: 16,
-                  ),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(
-                      defaultRadius,
+                    hintText: 'Password',
+                    hintStyle: blackTextStyle.copyWith(
+                      fontSize: 16,
                     ),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(
-                      defaultRadius,
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(
+                        defaultRadius,
+                      ),
                     ),
-                    borderSide: BorderSide(
-                      width: 2,
-                      color: kBlueColor,
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(
+                        defaultRadius,
+                      ),
+                      borderSide: BorderSide(
+                        width: 2,
+                        color: kBlueColor,
+                      ),
                     ),
-                  ),
-                ),
+                    suffixIcon: IconButton(
+                        icon: Icon(_isObscure
+                            ? Icons.visibility_off
+                            : Icons.visibility),
+                        onPressed: () {
+                          setState(() {
+                            _isObscure = !_isObscure;
+                          });
+                        })),
               )
             ],
           ),

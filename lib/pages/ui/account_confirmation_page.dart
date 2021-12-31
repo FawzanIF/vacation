@@ -12,6 +12,8 @@ class AccountConfirmationPage extends StatefulWidget {
 
 class _AccountConfirmationPageState extends State<AccountConfirmationPage> {
   bool isSigningUp = false;
+  File profileImageFile;
+  String profilePath;
 
   @override
   Widget build(BuildContext context) {
@@ -59,7 +61,7 @@ class _AccountConfirmationPageState extends State<AccountConfirmationPage> {
                             fit: BoxFit.cover)),
                   ),
                   Text(
-                    "Selamat Datang, ",
+                    "Welcome, ",
                     style: GoogleFonts.poppins(
                       color: Colors.black,
                       fontWeight: FontWeight.w300,
@@ -91,7 +93,7 @@ class _AccountConfirmationPageState extends State<AccountConfirmationPage> {
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(17)),
                               child: Text(
-                                "Buat Akun Saya",
+                                "Create My Account",
                                 style: GoogleFonts.poppins(
                                   color: Colors.white,
                                   fontWeight: FontWeight.w500,
@@ -99,6 +101,17 @@ class _AccountConfirmationPageState extends State<AccountConfirmationPage> {
                                 ),
                               ),
                               onPressed: () async {
+                                if (profilePath == "") {
+                                    profileImageFile = await getImage();
+
+                                    if (profileImageFile != null) {
+                                      profilePath =
+                                          basename(profileImageFile.path);
+                                    }
+                                  } else {
+                                    profileImageFile = null;
+                                    profilePath = "";
+                                  }
                                 setState(() {
                                   isSigningUp = true;
                                 });
@@ -125,6 +138,7 @@ class _AccountConfirmationPageState extends State<AccountConfirmationPage> {
                                     message: result.message,
                                   )..show(context);
                                 }
+                                
                               })),
                   SizedBox(
                     height: 110,

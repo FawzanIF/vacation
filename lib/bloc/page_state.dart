@@ -66,7 +66,17 @@ class OnAccountConfirmationPage extends PageState {
   List<Object> get props => [];
 }
 
-class OnSaintekPage extends PageState {
+class OnMenuPage extends PageState {
+  @override
+  List<Object> get props => [];
+}
+
+class OnSearchPage extends PageState {
+  @override
+  List<Object> get props => [];
+}
+
+class OnDetailPage extends PageState {
   @override
   List<Object> get props => [];
 }

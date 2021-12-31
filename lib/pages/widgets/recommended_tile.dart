@@ -8,6 +8,7 @@ class RecommemdedTile extends StatelessWidget {
   final double rating;
   final double price;
   final String address;
+  final String gmaps;
 
   RecommemdedTile({
     this.name,
@@ -15,6 +16,7 @@ class RecommemdedTile extends StatelessWidget {
     this.rating,
     this.address,
     this.price,
+    this.gmaps
   });
 
   @override
@@ -29,6 +31,7 @@ class RecommemdedTile extends StatelessWidget {
               name: name,
               rating: rating,
               price: price,
+              gmaps: gmaps,
             ),
           ),
         );

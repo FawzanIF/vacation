@@ -1,40 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:vacation/pages/ui/pages.dart';
 import 'package:vacation/shared/shared.dart';
+import 'package:url_launcher/url_launcher.dart';
 
-class DestinationTile extends StatelessWidget {
+class GuideTour extends StatelessWidget {
   final String name;
   final String imageUrl;
   final double rating;
-  final double price;
-  final String address;
-  final String gmaps;
+  final String walink;
 
-  const DestinationTile({
+  const GuideTour({
     this.name,
     this.imageUrl,
     this.rating,
-    this.address,
-    this.price,
-    this.gmaps
+    this.walink
   });
-
+  void customLaunch(command) async {
+      await launch(command); 
+  }
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => DetailPage(
-              imageUrl: imageUrl,
-              name: name,
-              rating: rating,
-              price: price,
-              gmaps: gmaps
-            ),
-          ),
-        );
+        customLaunch(walink);
       },
       child: Container(
         margin: EdgeInsets.only(
@@ -43,7 +31,7 @@ class DestinationTile extends StatelessWidget {
         padding: EdgeInsets.all(10),
         decoration: BoxDecoration(
           color: kWhiteColor,
-          borderRadius: BorderRadius.circular(18),
+          borderRadius: BorderRadius.circular(50),
         ),
         child: Row(
           children: [
@@ -52,7 +40,7 @@ class DestinationTile extends StatelessWidget {
               height: 70,
               margin: EdgeInsets.only(right: 16),
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(18),
+                borderRadius: BorderRadius.circular(50),
                 image: DecorationImage(
                   fit: BoxFit.cover,
                   image: AssetImage(
@@ -76,7 +64,7 @@ class DestinationTile extends StatelessWidget {
                     height: 5,
                   ),
                   Text(
-                    'Bali',
+                    'Guide Tour',
                     style: greyTextStyle.copyWith(
                       fontWeight: light,
                     ),

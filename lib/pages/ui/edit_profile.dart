@@ -47,7 +47,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                         height: 20,
                       ),
                       Text(
-                        "Edit Profile\nKamu",
+                        "Edit Your\nProfile",
                         textAlign: TextAlign.center,
                         style: blackTextStyle.copyWith(fontSize: 20),
                       ),
@@ -180,7 +180,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                                   width: 5,
                                 ),
                                 Text(
-                                  "Ubah Password",
+                                  "Change Password",
                                   style: whiteTextStyle.copyWith(
                                       fontSize: 16,
                                       color: (isUpdating)
@@ -265,7 +265,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                                       : null),
                             ),
                       SizedBox(height: 10),
-                      RaisedButton(
+                     MaterialButton(
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10.0),
                           ),
@@ -276,7 +276,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                             print("Confirm Action $action");
                           },
                           child: Text(
-                            "Keluar",
+                            "Log Out",
                             style: whiteTextStyle.copyWith(
                                 fontSize: 15, fontWeight: FontWeight.w500),
                           )),
@@ -321,13 +321,13 @@ Future<ConfirmAction> _asyncConfirmDialog(BuildContext context) async {
           style: blackTextStyle.copyWith(fontSize: 25),
         ),
         content: Text(
-          'Kamu yakin ingin keluar?',
+          'Are you sure?',
           style: blackTextStyle.copyWith(fontSize: 20),
         ),
         actions: <Widget>[
           FlatButton(
             child: Text(
-              'Batal',
+              'Cancel',
               style: blueTextStyle.copyWith(
                   fontSize: 15, fontWeight: FontWeight.w700),
             ),
@@ -337,7 +337,7 @@ Future<ConfirmAction> _asyncConfirmDialog(BuildContext context) async {
           ),
           FlatButton(
             child: Text(
-              'Keluar',
+              'Logout',
               style: redTextStyle.copyWith(
                   fontSize: 15, fontWeight: FontWeight.w500),
             ),

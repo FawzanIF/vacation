@@ -23,6 +23,9 @@ class _SignUpPageState extends State<SignUpPage> {
     emailController.text = widget.registrationData.email;
   }
 
+  bool _isObscure = true;
+  bool _isObscure2 = true;
+
   @override
   Widget build(BuildContext context) {
     Widget title() {
@@ -31,7 +34,7 @@ class _SignUpPageState extends State<SignUpPage> {
           top: defaultMargin,
         ),
         child: Text(
-          'Create New\nYour Account',
+          'Create Your \nAccount',
           style: blackTextStyle.copyWith(
             fontSize: 24,
             fontWeight: semiBold,
@@ -68,7 +71,9 @@ class _SignUpPageState extends State<SignUpPage> {
                       widget.registrationData.profileImage = null;
                     }
 
-                    setState(() {});
+                    setState(() {
+
+                    });
                   },
                   child: Container(
                     height: 28,
@@ -188,27 +193,35 @@ class _SignUpPageState extends State<SignUpPage> {
               TextFormField(
                 controller: passwordController,
                 cursorColor: kBlackColor,
-                obscureText: true,
+                obscureText: _isObscure,
                 decoration: InputDecoration(
-                  hintText: 'Password',
-                  hintStyle: blackTextStyle.copyWith(
-                    fontSize: 16,
-                  ),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(
-                      defaultRadius,
+                    hintText: 'Password',
+                    hintStyle: blackTextStyle.copyWith(
+                      fontSize: 16,
                     ),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(
-                      defaultRadius,
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(
+                        defaultRadius,
+                      ),
                     ),
-                    borderSide: BorderSide(
-                      width: 2,
-                      color: kBlueColor,
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(
+                        defaultRadius,
+                      ),
+                      borderSide: BorderSide(
+                        width: 2,
+                        color: kBlueColor,
+                      ),
                     ),
-                  ),
-                ),
+                    suffixIcon: IconButton(
+                        icon: Icon(_isObscure
+                            ? Icons.visibility_off
+                            : Icons.visibility),
+                        onPressed: () {
+                          setState(() {
+                            _isObscure = !_isObscure;
+                          });
+                        })),
               )
             ],
           ),
@@ -231,27 +244,35 @@ class _SignUpPageState extends State<SignUpPage> {
               TextFormField(
                 controller: retypePasswordController,
                 cursorColor: kBlackColor,
-                obscureText: true,
+                obscureText: _isObscure2,
                 decoration: InputDecoration(
-                  hintText: 'Re-Password',
-                  hintStyle: blackTextStyle.copyWith(
-                    fontSize: 16,
-                  ),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(
-                      defaultRadius,
+                    hintText: 'Re-Password',
+                    hintStyle: blackTextStyle.copyWith(
+                      fontSize: 16,
                     ),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(
-                      defaultRadius,
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(
+                        defaultRadius,
+                      ),
                     ),
-                    borderSide: BorderSide(
-                      width: 2,
-                      color: kBlueColor,
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(
+                        defaultRadius,
+                      ),
+                      borderSide: BorderSide(
+                        width: 2,
+                        color: kBlueColor,
+                      ),
                     ),
-                  ),
-                ),
+                    suffixIcon: IconButton(
+                        icon: Icon(_isObscure2
+                            ? Icons.visibility_off
+                            : Icons.visibility),
+                        onPressed: () {
+                          setState(() {
+                            _isObscure2 = !_isObscure2;
+                          });
+                        })),
               )
             ],
           ),
@@ -330,7 +351,7 @@ class _SignUpPageState extends State<SignUpPage> {
           child: Row(
             children: [
               Text(
-                'Don’t have an account?',
+                'Already have an account?',
                 style: blackTextStyle.copyWith(
                   fontWeight: medium,
                   fontSize: 16,

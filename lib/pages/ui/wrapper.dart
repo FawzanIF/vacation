@@ -31,12 +31,14 @@ class Wrapper extends StatelessWidget {
                         : (pageState is OnAccountConfirmationPage)
                             ? AccountConfirmationPage(
                                 pageState.registrationData)
-                            : (pageState is OnSaintekPage)
-                                ? SaintekPage()
-                                : (pageState is OnNotePage)
-                                    ? NotePage()
-                                    : (pageState is OnEditProfilePage)
-                                        ? EditProfilePage(pageState.user)
-                                        : MainPage());
+                            : (pageState is OnMenuPage)
+                                ? MenuPage()
+                                : (pageState is OnDetailPage)
+                                    ? DetailPage()
+                                    : (pageState is OnSearchPage)
+                                        ? SearchPage()
+                                        : (pageState is OnEditProfilePage)
+                                            ? EditProfilePage(pageState.user)
+                                            : MainPage());
   }
 }

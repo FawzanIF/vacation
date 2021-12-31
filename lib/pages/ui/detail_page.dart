@@ -6,6 +6,7 @@ class DetailPage extends StatefulWidget {
   final double rating;
   final double price;
   final String address;
+  final String gmaps;
 
   DetailPage({
     this.imageUrl,
@@ -13,18 +14,25 @@ class DetailPage extends StatefulWidget {
     this.rating,
     this.address,
     this.price,
+    this.gmaps
   });
+  
   @override
   _DetailPageState createState() => _DetailPageState();
 }
 
 class _DetailPageState extends State<DetailPage> {
+
+  void customLaunch(command) async {
+      await launch(command); 
+  }
   @override
   Widget build(BuildContext context) {
+    
     return Scaffold(
       backgroundColor: kWhiteColor,
       body: SafeArea(
-        bottom: false,
+        bottom: true,
         child: Stack(
           children: [
             Image.asset(
@@ -133,7 +141,7 @@ class _DetailPageState extends State<DetailPage> {
                               style: blackTextStyle,
                             ),
                             Text(
-                             '\$'+ widget.price.toString(),
+                              '\$' + widget.price.toString(),
                               style: blueTextStyle.copyWith(
                                   fontSize: 16, fontWeight: semiBold),
                             )
@@ -171,7 +179,7 @@ class _DetailPageState extends State<DetailPage> {
                               imageUrl: 'assets/icon_hotel.png',
                             ),
                             FacilityItem(
-                              name: 'Masjid',
+                              name: 'Mosque',
                               imageUrl: 'assets/icon_mosque.png',
                             ),
                           ],
@@ -233,7 +241,7 @@ class _DetailPageState extends State<DetailPage> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              'Loacation',
+                              'Location',
                               style: blackTextStyle.copyWith(
                                 fontSize: 18,
                               ),
@@ -244,21 +252,34 @@ class _DetailPageState extends State<DetailPage> {
                             Row(children: [
                               Expanded(
                                 child: Text(
-                                  'Nusapenida, Kabupaten\nKlungkung, Bali',
+                                 widget.name + ', Bali',
                                   style: greyTextStyle.copyWith(
                                     fontSize: 14,
                                   ),
                                 ),
                               ),
-                              Container(
-                                height: 42,
-                                width: 42,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(16),
-                                  image: DecorationImage(
-                                    fit: BoxFit.cover,
-                                    image:
-                                        AssetImage('assets/icon_location.png'),
+                              GestureDetector(
+                                onTap: (){
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => WebViewPage(detailPage: DetailPage(
+                                          name: widget.name,
+                                          gmaps: widget.gmaps,
+                                          )),
+                                      ),
+                                    );
+                                },
+                                child: Container(
+                                  height: 42,
+                                  width: 42,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(16),
+                                    image: DecorationImage(
+                                      fit: BoxFit.cover,
+                                      image:
+                                          AssetImage('assets/icon_location.png'),
+                                    ),
                                   ),
                                 ),
                               ),
@@ -272,7 +293,14 @@ class _DetailPageState extends State<DetailPage> {
                         child: Row(
                           children: [
                             GestureDetector(
-                              onTap: () {},
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => GuideTourPage(),
+                                  ),
+                                );
+                              },
                               child: Container(
                                 width: 54,
                                 height: 54,
@@ -289,7 +317,18 @@ class _DetailPageState extends State<DetailPage> {
                               child: Container(
                                 height: 54,
                                 child: TextButton(
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => BookingPage(detailPage: DetailPage(
+                                          imageUrl: widget.imageUrl,
+                                          name: widget.name,
+                                          price: widget.price,
+                                          rating: widget.rating,)),
+                                      ),
+                                    );
+                                  },
                                   style: TextButton.styleFrom(
                                     shape: RoundedRectangleBorder(
                                         borderRadius:
@@ -297,7 +336,7 @@ class _DetailPageState extends State<DetailPage> {
                                     backgroundColor: kBlueColor,
                                   ),
                                   child: Text(
-                                    'Add to Chart',
+                                    'Book Now',
                                     style: whiteTextStyle.copyWith(
                                       fontSize: 16,
                                       fontWeight: semiBold,

@@ -14,7 +14,6 @@ class MainPage extends StatefulWidget {
 class _MainPageState extends State<MainPage> {
   int bottomNavBarIndex;
   PageController pageController;
-  YoutubePlayerController _controller;
 
   @override
   void initState() {
@@ -22,18 +21,6 @@ class _MainPageState extends State<MainPage> {
 
     bottomNavBarIndex = widget.bottomNavBarIndex;
     pageController = PageController(initialPage: bottomNavBarIndex);
-  }
-
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
-  }
-
-  @override
-  void deactivate() {
-    _controller.pause();
-    super.deactivate();
   }
 
   @override
@@ -55,7 +42,7 @@ class _MainPageState extends State<MainPage> {
                 bottomNavBarIndex = index;
               });
             },
-            children: <Widget>[SaintekPage(), MotivasiPage()],
+            children: <Widget>[MenuPage(), TicketPage()],
           ),
           createCustomBottomNavBar(),
           Align(
